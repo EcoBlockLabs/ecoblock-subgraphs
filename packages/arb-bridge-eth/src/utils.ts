@@ -11,9 +11,7 @@ import {
 import { encodePadded, padBytes } from "@arbitrum/subgraph-common";
 import { getBytes, rlpEncodeList } from "./rlp";
 import { InboxMessageDelivered as InboxMessageDeliveredEvent } from "../generated/Inbox/Inbox";
-import { Inbox } from "../generated/schema";
 
-const NOVA_INBOX_ADDRESS = "0xc4448b71118c9071bcb9734a0eac55d18a153949";
 const ADDRESS_ALIAS_OFFSET = "0x1111000000000000000000000000000000001111";
 
 export function isArbOne(): boolean {
@@ -25,17 +23,9 @@ export function isArbOne(): boolean {
 export const getL2ChainId = (): Bytes => {
   const network = dataSource.network();
   if (network == "mainnet") {
-    // determine if L2 is Nova
-    if (Inbox.load(NOVA_INBOX_ADDRESS) != null) {
-      return Bytes.fromByteArray(Bytes.fromHexString("0xa4ba"));
-    } else {
-      // Arb One
-      return Bytes.fromByteArray(Bytes.fromHexString("0xa4b1"));
-    }
+    return Bytes.fromByteArray(Bytes.fromHexString("0x26C"));// 620
   }
-
-  if (network == "rinkeby") return Bytes.fromByteArray(Bytes.fromHexString("0x066EEB"));
-  if (network == "goerli") return Bytes.fromByteArray(Bytes.fromHexString("0x066eed"));
+  if (network == "sepolia") return Bytes.fromByteArray(Bytes.fromHexString("0x26D"));// 621
 
   log.critical("No chain id recognised", []);
   throw new Error("No chain id found");

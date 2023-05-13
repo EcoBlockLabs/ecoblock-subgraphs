@@ -14,6 +14,8 @@
   "classicBridgeEnd": "{{/classicBridgeAddress}}",
   "l1GatewayRouter": "{{ l1GatewayRouter }}",
   "l1GatewayRouterDeployBlock": "{{ l1GatewayRouterDeployBlock }}",
+  "l1GatewayRouterStart": "{{#l1GatewayRouter}}",
+  "l1GatewayRouterEnd": "{{/l1GatewayRouter}}",
   "rollupAddress": "{{ rollupAddress }}",
   "rollupDeploymentBlock": "{{ rollupDeploymentBlock }}"
 }

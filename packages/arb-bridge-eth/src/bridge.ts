@@ -1,25 +1,12 @@
-import { InboxMessageDelivered as InboxMessageDeliveredEvent } from "../generated/Inbox/Inbox";
+import {InboxMessageDelivered as InboxMessageDeliveredEvent} from "../generated/Inbox/Inbox";
 import {
   MessageDelivered as MessageDeliveredEvent,
   MessageDelivered1 as NitroMessageDeliveredEvent,
 } from "../generated/Bridge/Bridge";
-import {
-  Retryable,
-  RawMessage,
-  Deposit,
-  ClassicRawMessage,
-  ClassicRetryable,
-} from "../generated/schema";
-import { Bytes, BigInt, ethereum, Address, log, store } from "@graphprotocol/graph-ts";
-import {
-  applyAlias,
-  bigIntToId,
-  getL2NitroRetryableTicketId,
-  getL2RetryableTicketId,
-  isArbOne,
-  RetryableTx,
-} from "./utils";
-import { getOrCreateInbox } from "./bridgeUtils";
+import {ClassicRawMessage, ClassicRetryable, Deposit, RawMessage, Retryable,} from "../generated/schema";
+import {Address, BigInt, Bytes, ethereum, log, store} from "@graphprotocol/graph-ts";
+import {applyAlias, bigIntToId, getL2NitroRetryableTicketId, getL2RetryableTicketId, RetryableTx,} from "./utils";
+import {getOrCreateInbox} from "./bridgeUtils";
 
 const ARB_ONE_INBOX_FIRST_NITRO_BLOCK = 15447158;
 
@@ -71,42 +58,21 @@ export function handleInboxMessageDelivered(event: InboxMessageDeliveredEvent): 
   // TODO: handle `InboxMessageDeliveredFromOrigin(indexed uint256)`. Same as this function, but use event.tx.input instead of event data
   const id = bigIntToId(event.params.messageNum);
 
-  let firstNitroBlock = 0;
-  if (isArbOne()) {
-    firstNitroBlock = ARB_ONE_INBOX_FIRST_NITRO_BLOCK;
+  let prevEntity = RawMessage.load(id);
+
+  // this assumes that an entity was previously created since the MessageDelivered event is emitted before the inbox event
+  if (!prevEntity) {
+    log.critical("Wrong order in entity!!", []);
+    throw new Error("Oh damn no entity wrong order");
   }
 
-  /// handle Nitro
-  if (event.block.number.ge(BigInt.fromI32(firstNitroBlock))) {
-    let prevEntity = RawMessage.load(id);
-
-    // this assumes that an entity was previously created since the MessageDelivered event is emitted before the inbox event
-    if (!prevEntity) {
-      log.critical("Wrong order in entity!!", []);
-      throw new Error("Oh damn no entity wrong order");
-    }
-
-    ///in Nitro Eth deposit is different message type from retrayable
-    if (prevEntity.kind == "EthDeposit") {
-      handleNitroEthDeposit(event, prevEntity);
-      return;
-    }
-    if (prevEntity.kind == "Retryable") {
-      handleNitroRetryable(event, prevEntity);
-      return;
-    }
-  } else {
-    /// handle Classic
-    let prevEntity = ClassicRawMessage.load(id);
-
-    // this assumes that an entity was previously created since the MessageDelivered event is emitted before the inbox event
-    if (!prevEntity) {
-      log.critical("Wrong order in entity!!", []);
-      throw new Error("Oh damn no entity wrong order");
-    }
-
-    //// in classic Eth deposit is retryable
-    handleClassicRetryable(event, prevEntity);
+  ///in Nitro Eth deposit is different message type from retrayable
+  if (prevEntity.kind == "EthDeposit") {
+    handleNitroEthDeposit(event, prevEntity);
+    return;
+  }
+  if (prevEntity.kind == "Retryable") {
+    handleNitroRetryable(event, prevEntity);
     return;
   }
 

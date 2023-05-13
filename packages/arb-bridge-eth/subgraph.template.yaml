@@ -113,6 +113,7 @@ dataSources:
           handler: handleClassicMessageDelivered
       file: ./src/bridge.ts
   {{{ classicBridgeEnd }}}
+  {{ l1GatewayRouterStart }}
   - kind: ethereum/contract
     name: L1GatewayRouter
     network: {{ l1Network }}
@@ -150,4 +151,5 @@ dataSources:
         - function: initialize(address,address,address,address,address)
           handler: handleInitialize
       file: ./src/tokenBridge.ts
+  {{{ l1GatewayRouterEnd }}}
 {{{ rollupPreprocessor }}}

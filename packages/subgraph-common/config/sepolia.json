@@ -1,0 +1,21 @@
+{
+  "l1Network": "sepolia",
+  "l2Network": "ecoblock-sepolia",
+  "arbRetryableTxStartBlock": 0,
+  "arbSysStartBlock": 0,
+  "l2GatewayRouter": "",
+  "l2GatewayRouterDeployBlock": 5,
+  "l2StandardGateway": "",
+  "l2StandardGatewayDeployBlock": 7,
+  "outboxAddress": "0xd7560ec4ec67350830222c616f590cb3efce2347",
+  "outboxDeploymentBlock": 3444248,
+  "inboxAddress": "0xe44f80a5d59975e058b33cd62569b4ae2cbe30e1",
+  "inboxDeploymentBlock": 3444248,
+  "bridgeAddress": "0x043d53d7883f81c947963f11d25130b97061c22a",
+  "bridgeDeploymentBlock": 3444248,
+  "rollupAddress": "0x8da4f0c8e6ffb168a6e9ae75af2866a9d24ae30c",
+  "rollupDeploymentBlock": 3444248,
+  "l1GatewayRouter": "",
+  "l1GatewayRouterDeployBlock": 7223070,
+  "nitroGenesisBlockNum": 0
+}
