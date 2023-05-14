@@ -1,10 +1,10 @@
-# Arbitrum subgraphs
+# EcoBlock subgraphs
 
-This project contains subgraphs to track Arbitrum token bridge and cross chain messaging.
+This project contains subgraphs to track EcoBlock token bridge and cross chain messaging.
 
 ## arb-bridge-eth
 
-Tracks ETH and token deposits from L1 to L2, both classic and nitro versions. It also tracks retryable tickets. Entity `sender` field is always original address of the deposit/retryable creator, not aliased or unaliased version of address.
+Tracks ETH and token deposits from L1 to L2. It also tracks retryable tickets. Entity `sender` field is always original address of the deposit/retryable creator, not aliased or unaliased version of address.
 
 `Nitro`  
 Query endpoint: https://api.thegraph.com/subgraphs/name/gvladika/arb-bridge-eth-nitro  
