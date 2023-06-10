@@ -1,0 +1,21 @@
+{
+  "l1Network": "bsc-testnet",
+  "l2Network": "ecoblock-testnet",
+  "arbRetryableTxStartBlock": 0,
+  "arbSysStartBlock": 0,
+  "l2GatewayRouter": "",
+  "l2GatewayRouterDeployBlock": 5,
+  "l2StandardGateway": "",
+  "l2StandardGatewayDeployBlock": 7,
+  "outboxAddress": "0x04bf8e8aeb38139bd4ab88971ee44c0ddaa6cbe8",
+  "outboxDeploymentBlock": 30516019,
+  "inboxAddress": "0x812f40cc7b0fdaa7387de75368e175367e6fec56",
+  "inboxDeploymentBlock": 30516019,
+  "bridgeAddress": "0xed16681b27f3239ef352f51fa5b03460b863c29f",
+  "bridgeDeploymentBlock": 30516019,
+  "rollupAddress": "0x719adb12dbadc772b5160a5fbf32e398229c0939",
+  "rollupDeploymentBlock": 30516019,
+  "l1GatewayRouter": "",
+  "l1GatewayRouterDeployBlock": 7223070,
+  "nitroGenesisBlockNum": 0
+}

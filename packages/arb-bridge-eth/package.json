@@ -16,12 +16,12 @@
     "prepare:nitro-mainnet": "yarn workspace @arbitrum/subgraph-common mustache $(pwd)/../subgraph-common/config/nitro-mainnet.json $(pwd)/subgraph.preprocessed.yaml | tail -n +2 > subgraph.yaml",
     "prepare:nova": "yarn workspace @arbitrum/subgraph-common mustache $(pwd)/../subgraph-common/config/nova-mainnet.json $(pwd)/subgraph.preprocessed.yaml | tail -n +2 > subgraph.yaml",
     "prepare:nitro-goerli": "yarn workspace @arbitrum/subgraph-common mustache $(pwd)/../subgraph-common/config/goerli.json $(pwd)/subgraph.preprocessed.yaml | tail -n +2 > subgraph.yaml",
-    "prepare:ecoblock-sepolia": "yarn workspace @arbitrum/subgraph-common mustache $(pwd)/../subgraph-common/config/sepolia.json $(pwd)/subgraph.preprocessed.yaml | tail -n +2 > subgraph.yaml",
+    "prepare:ecoblock-testnet": "yarn workspace @arbitrum/subgraph-common mustache $(pwd)/../subgraph-common/config/bsc-testnet.json $(pwd)/subgraph.preprocessed.yaml | tail -n +2 > subgraph.yaml",
 
     "deploy:nitro-mainnet": "yarn prepare:build && yarn prepare:nitro-mainnet && graph deploy --node https://api.thegraph.com/deploy/ gvladika/arb-bridge-eth-nitro",
     "deploy:nova": "yarn prepare:build && yarn prepare:nova && graph deploy --node https://api.thegraph.com/deploy/ gvladika/arb-bridge-eth-nova",
     "deploy:nitro-goerli": "yarn prepare:build && yarn prepare:nitro-goerli && graph deploy --node https://api.thegraph.com/deploy/ gvladika/arb-bridge-eth-goerli",
-    "deploy:ecoblock-sepolia": "yarn prepare:build && yarn prepare:ecoblock-sepolia && graph deploy --node https://api.studio.thegraph.com/deploy/ ecoblock-testnet-bridge",
+    "deploy:ecoblock-testnet": "yarn prepare:build && yarn prepare:ecoblock-testnet && graph deploy --node https://api.studio.thegraph.com/deploy/ ecoblock-testnet-bridge",
     "test": "rm -rf tests/.bin && yarn codegen && yarn build && graph test --version 0.5.0"
   },
   "dependencies": {

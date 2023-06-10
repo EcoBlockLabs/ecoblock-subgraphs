@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Subgraph that indexes Arbitrum eth-bridge contracts
+description: Subgraph that indexes EcoBlock eth-bridge contracts
 schema:
   file: ./schema.graphql
 templates:
