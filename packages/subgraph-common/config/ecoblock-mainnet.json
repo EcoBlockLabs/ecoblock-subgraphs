@@ -1,0 +1,21 @@
+{
+  "l1Network": "mainnet",
+  "l2Network": "ecoblock-mainnet",
+  "arbRetryableTxStartBlock": 0,
+  "arbSysStartBlock": 0,
+  "l2GatewayRouter": "",
+  "l2GatewayRouterDeployBlock": 5,
+  "l2StandardGateway": "",
+  "l2StandardGatewayDeployBlock": 7,
+  "outboxAddress": "0xf0b8b68f93998723968116a12e4e5a54b0e0819d",
+  "outboxDeploymentBlock": 17517316,
+  "inboxAddress": "0xd0ccd2309a79f4dc4178278bc86c2a51832b916f",
+  "inboxDeploymentBlock": 17517316,
+  "bridgeAddress": "0xb9a75d7a4eb3e1de05d49dcd3c08fe133b133639",
+  "bridgeDeploymentBlock": 17517316,
+  "rollupAddress": "0x4698b00891820c79875bb2a8b8d4958d4b56a411",
+  "rollupDeploymentBlock": 17517316,
+  "l1GatewayRouter": "",
+  "l1GatewayRouterDeployBlock": 17517316,
+  "nitroGenesisBlockNum": 0
+}
